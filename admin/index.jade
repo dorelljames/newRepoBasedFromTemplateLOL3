@@ -1,0 +1,52 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Content Manager
+
+    link(rel="icon", href= records.site.sitedata[0].icon, type="image/png")
+    link(rel="shortcut icon", href= records.site.sitedata[0].icon, type="img/x-icon")
+
+    link(rel="stylesheet", href="//cms.webriq.com/assets/cms.css")
+
+    link(rel="stylesheet", href="/css/style.css")
+
+
+    script!= "CMS_ENV = \"" + (process.env.CMS_ENV || "development") + "\";"
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+
+    base(href="/admin/")
+  body
+
+    script(type="text/x-handlebars" data-template-name='cms/preview/sitedata').
+      <div id="main-wrapper">
+        <div class="container">
+
+          {{#cms-preview field="sitedata" as |sitedatas| }}
+            <section class="box">
+              <h1>Site Information</h1>
+              <hr>
+              <h5>Website Name:</h5>
+              <p>{{sitedatas.sitename}}</p>
+              <h5>Favicon icon:</h5>
+              <p>{{cms-preview field="icon" from=sitedatas}}</p>
+              <h5>Site Logo:</h5>
+              <p>{{cms-preview field="logo" from=sitedatas}}</p>
+              <h5>Meta Description:</h5>
+              <p>{{sitedatas.metadesc}}</p>
+              <h5>Meta Author:</h5>
+              <p>{{sitedatas.metauthor}}</p>
+              <h5>Meta Keywords:</h5>
+              <p>{{sitedatas.metauthor}}</p>
+              <h5>Copyright Text:</h5>
+              <p>{{cms-preview field="footer" from=sitedatas}}</p>
+            </section>
+          {{/cms-preview}}
+        </div>
+      </div>
+
+
+    script(src="//cms.webriq.com/assets/vendor.js")
+    script(src="//cms.webriq.com/assets/cms.js")
+
