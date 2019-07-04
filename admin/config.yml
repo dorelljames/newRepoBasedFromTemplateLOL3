@@ -4,7 +4,7 @@ backend:
 production:
   backend:
     name: github-api
-    repo: dorelljames/business-static-new-template
+    repo: newowner/newrepo # dorelljames/business-static-new-template
     branch: master
 media_folder: assets/img/uploads
 public_folder: assets
